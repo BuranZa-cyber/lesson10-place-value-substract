@@ -1,38 +1,68 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>520000 - 180000</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>520 000 − 180 000</title>
 <style>
-:root{color-scheme:light}*{box-sizing:border-box}[hidden]{display:none!important}body{margin:0;padding:16px;background:#f7f7fb;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#1a2940}main{max-width:700px;margin:auto;background:white;border:1px solid #e0e4ee;border-radius:18px;padding:clamp(12px,3vw,24px);box-shadow:0 4px 18px #14203c0d}h1{margin:0;font-size:clamp(19px,4.3vw,27px);font-weight:800;letter-spacing:.01em}.head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:18px}.reset{border:1px solid #d3dbea;border-radius:10px;padding:7px 13px;background:#f2f5f9;font-size:22px;cursor:pointer}.board{border:1px solid #dadfea;background:#fbfcff;border-radius:14px;padding:clamp(7px,2.3vw,14px)}.cols{display:grid;grid-template-columns:23px repeat(3,minmax(0,1fr)) 1.12fr;gap:5px;max-width:510px;margin:auto;align-items:center}.title{font-weight:650;font-size:clamp(10px,2.9vw,14px);color:#52627c;text-align:center;padding:0 2px 10px;white-space:nowrap}.digit{height:clamp(48px,9vw,66px);border-radius:9px;display:grid;place-items:center;font-size:clamp(25px,6.1vw,36px);font-weight:800;position:relative;font-variant-numeric:tabular-nums}.purple{background:#eee7ff;color:#563c9b}.blue{background:#e5f0ff;color:#225fa8}.yellow{background:#fff1d3;color:#926005}.grey{background:#edf0f5;color:#606d82}.op{font-size:26px;font-weight:800;text-align:center}.bar{grid-column:1/-1;border-top:3px solid #516079;margin:5px 0 2px}.answer{background:white;border:2px dashed #b2bacb}.answer.active{border:3px solid #eba92f;background:#fff3d4;color:#6d4b13}.answer.good{border:2px solid #74c6a0;background:#e2f8ed;color:#126943}.carry{position:absolute;top:0px;right:5px;font-size:clamp(12px,3vw,17px);color:#ad5c05;line-height:1;font-weight:850}.old{text-decoration:line-through;opacity:.42}.original{transition:opacity .15s}.carry.big{top:-3px;right:3px;background:#fff5da;padding:0px 3px;border-radius:4px}.under{grid-column:2/-1;text-align:center;font-weight:750;min-height:38px;font-size:clamp(19px,4vw,24px);padding:6px 0}.take{display:block;width:min(100%,450px);margin:15px auto 0;padding:13px 8px;border:2px solid #c8983b;border-radius:12px;background:#ffefc5;color:#674400;font-size:clamp(17px,4vw,22px);font-weight:800;cursor:pointer}.digits{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px;max-width:510px;margin:16px auto 0}.digits button{font-weight:800;font-size:23px;color:#263a54;background:#fff;border:1px solid #cbd4e2;border-radius:10px;min-height:51px;cursor:pointer}.digits button:focus-visible,.take:focus-visible,.reset:focus-visible{outline:3px solid #237bc7;outline-offset:3px}.digits button:active{transform:translateY(2px)}.hint{display:flex;gap:6px;justify-content:center;margin:13px 0 0}.hint i{height:6px;width:40px;border-radius:3px;background:#e0e4ee}.hint i.active{background:#dda139}.hint i.done{background:#42b882}.error{animation:shake .15s linear 2;border-color:#e35760!important;background:#ffe4e6!important}@keyframes shake{0%{transform:translateX(-2px)}100%{transform:translateX(2px)}}@media(max-width:510px){body{padding:5px}main{padding:12px;border-radius:10px}.cols{gap:3px;grid-template-columns:16px repeat(3,minmax(0,1fr)) 1.12fr}.title{font-size:10px}.digits{grid-template-columns:repeat(5,minmax(0,1fr))}.digits button{min-height:43px;font-size:20px}}
+:root{color-scheme:light;--ink:#222b43;--purple:#6945a7;--blue:#2565a6;--border:#d8e2ee}
+*{box-sizing:border-box}
+body{margin:0;padding:12px;background:#fff;font-family:system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink)}
+main{max-width:510px;margin:0 auto;border:1px solid var(--border);border-radius:18px;padding:24px 16px 20px;background:#fff}
+.column{width:min(100%,340px);margin:auto;display:grid;grid-template-columns:36px 1fr;row-gap:4px;align-items:center}
+.symbol{font-weight:800;text-align:center;font-size:32px;line-height:1}
+.number{display:flex;gap:4px;justify-content:center;align-items:center;font-variant-numeric:tabular-nums}
+.group{font-size:clamp(33px,8vw,47px);font-weight:790;letter-spacing:1px;min-width:0;padding:6px 9px;text-align:center;border-radius:10px}
+.thousands{background:#eee5fc;color:#5a368f}
+.units{background:#e5f1ff;color:#1b5d98}
+.rule{grid-column:1/-1;border-top:4px solid #34445e;margin:10px 0 10px}
+.answer-row{display:flex;align-items:center;justify-content:center;gap:10px;min-width:0}
+#answer{width:min(100%,235px);height:72px;border:2px solid #b7c7dc;background:#fff;border-radius:12px;outline:0;font:750 clamp(30px,7vw,40px)/1 system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:var(--ink);text-align:center;letter-spacing:1px;font-variant-numeric:tabular-nums}
+#answer::placeholder{color:#aebbd0}
+#answer:focus{border-color:#6479e2;box-shadow:0 0 0 3px #6479e222}
+#answer.error{border-color:#e05b62;background:#fff3f3}
+#answer.correct{border-color:#27945d;background:#edf9f0}
+button{cursor:pointer;display:grid;place-items:center;flex:0 0 65px;height:65px;border:none;border-radius:14px;background:#3478cf;color:white;font:bold 38px/1 system-ui,-apple-system,Segoe UI,Arial,sans-serif;touch-action:manipulation}
+button:hover{background:#2468bf}button:active{transform:scale(.97)}button:focus-visible{outline:3px solid #ca8d12;outline-offset:3px}
+#result{grid-column:1/-1;min-height:36px;text-align:center;font-size:31px;font-weight:850;line-height:36px;color:#2b9666;margin-top:7px}
+#result.bad{color:#df5261}
+@media(max-width:420px){main{padding:16px 8px}.column{grid-template-columns:29px 1fr;width:min(100%,315px)}.group{padding:7px 6px;font-size:clamp(28px,8.1vw,39px)}#answer{width:min(100%,215px);height:62px}button{height:60px;flex-basis:60px}}
 </style>
 </head>
 <body>
-<main id="app">
-  <div class="head"><h1>520 000 − 180 000</h1><button type="button" id="reset" class="reset" aria-label="Reset">↺</button></div>
-  <div class="board">
-    <div class="cols">
-      <div></div><div class="title">100 000</div><div class="title">10 000</div><div class="title">1 000</div><div class="title">1 · 10 · 100</div>
-      <div></div><div class="digit purple" id="top-hundred"><span class="original">5</span></div><div class="digit blue" id="top-ten"><span class="original">2</span></div><div class="digit yellow">0</div><div class="digit grey">000</div>
-      <div class="op">−</div><div class="digit purple">1</div><div class="digit blue">8</div><div class="digit yellow">0</div><div class="digit grey">000</div>
-      <div class="bar"></div>
-      <div class="op">=</div><div class="digit answer" id="ans-hundred">?</div><div class="digit answer" id="ans-ten">?</div><div class="digit yellow">0</div><div class="digit grey">000</div>
+<main>
+  <form id="exercise" autocomplete="off" novalidate>
+    <div class="column">
+      <span class="symbol" aria-hidden="true"></span>
+      <div class="number" aria-label="520000"><span class="group thousands">520</span><span class="group units">000</span></div>
+      <span class="symbol" aria-hidden="true">−</span>
+      <div class="number" aria-label="180000"><span class="group thousands">180</span><span class="group units">000</span></div>
+      <div class="rule" aria-hidden="true"></div>
+      <span class="symbol" aria-hidden="true">=</span>
+      <div class="answer-row">
+        <input id="answer" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="?" aria-label="Result" autocomplete="off" spellcheck="false" autocapitalize="off">
+        <button type="submit" aria-label="Check">✓</button>
+      </div>
+      <div id="result" role="status" aria-live="polite"></div>
     </div>
-    <div id="math" class="under" aria-live="polite">2 − 8 = ?</div>
-    <button type="button" id="borrow" class="take">5 → 4 &nbsp;&nbsp;|&nbsp;&nbsp; 2 → 12</button>
-    <div id="bank" class="digits" hidden></div>
-    <div class="hint" aria-hidden="true"><i class="active" id="dot0"></i><i id="dot1"></i><i id="dot2"></i></div>
-  </div>
+  </form>
 </main>
 <script>
-(() => {
- const $=id=>document.getElementById(id);let step=0;
- const bank=$('bank');for(let n=0;n<10;n++){let b=document.createElement('button');b.textContent=n;b.type='button';b.setAttribute('aria-label',String(n));b.addEventListener('click',()=>answer(n));bank.appendChild(b)}
- function dots(){[0,1,2].forEach((i)=>{$('dot'+i).className=i<step?'done':i===step?'active':''})}
- function init(){step=0;$('top-hundred').innerHTML='<span class="original">5</span>';$('top-ten').innerHTML='<span class="original">2</span>';$('ans-hundred').textContent='?';$('ans-ten').textContent='?';$('ans-hundred').className='digit answer';$('ans-ten').className='digit answer';$('borrow').hidden=false;bank.hidden=true;$('math').textContent='2 − 8 = ?';dots()}
- function answer(n){let expected=step===1?4:3;let dest=step===1?$('ans-ten'):$('ans-hundred');if(n!==expected){dest.classList.add('error');setTimeout(()=>dest.classList.remove('error'),330);return};dest.textContent=n;dest.className='digit answer good';step+=1;if(step===2){$('math').textContent='4 − 1 = ?';$('ans-hundred').classList.add('active')}else if(step===3){$('math').textContent='✓ 340 000';bank.hidden=true;$('ans-hundred').classList.remove('active')};dots()}
- $('borrow').addEventListener('click',()=>{if(step!==0)return;step=1;$('top-hundred').innerHTML='<span class="old">5</span><span class="carry big">4</span>';$('top-ten').innerHTML='<span class="old">2</span><span class="carry big">12</span>';$('borrow').hidden=true;bank.hidden=false;$('math').textContent='12 − 8 = ?';$('ans-ten').classList.add('active');dots()});$('reset').addEventListener('click',init);init();
+(()=>{
+'use strict';
+const form=document.getElementById('exercise');
+const input=document.getElementById('answer');
+const result=document.getElementById('result');
+input.addEventListener('input',()=>{input.value=input.value.replace(/[^0-9]/g,'').slice(0,6);input.classList.remove('error','correct');result.textContent='';result.className='';});
+form.addEventListener('submit',(event)=>{
+ event.preventDefault();
+ const correct=input.value==='340000';
+ input.classList.toggle('correct',correct);
+ input.classList.toggle('error',!correct);
+ result.textContent=correct?'✓':'×';
+ result.className=correct?'':'bad';
+});
 })();
 </script>
 </body>
